@@ -64,6 +64,7 @@ public class LinkedListDeque<T> {
         //orders matter
         sentinal.prev.prev.next = sentinal;
         sentinal.prev = sentinal.prev.prev;
+
         if (size != 0) {
             size -= 1;
         }
@@ -121,7 +122,6 @@ public class LinkedListDeque<T> {
         ph.addLast("you");
         ph.printDeque();
         System.out.println(ph.size());
-        System.out.println(ph.get(1));
         ph.removeLast();
         ph.addLast("U too");
         ph.printDeque();
