@@ -37,7 +37,26 @@ public class SLList {
             currentNode = currentNode.next;
         }
         currentNode.next = new IntNode(x, currentNode.next);
+    }
 
+    public void reverse() {
+        /** Special cases: when the SLList is null or it has only one element,
+         * there is not need to reverse anything. */
+        if (first == null || first.next == null) {
+            return;
+        }
+
+        IntNode ptr = first.next;
+        first.next = null;
+
+        while(ptr != null) {
+            /** Each loop connect ptr to first, and use temp to cache ptr.next.
+             * so when ptr.next = null, we should still go through the loop one last time.*/
+            IntNode temp = ptr.next;
+            ptr.next = first;
+            first = ptr;
+            ptr = temp;
+        }
     }
 
     public static void main(String[] args) {
