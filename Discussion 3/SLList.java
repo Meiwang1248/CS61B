@@ -37,9 +37,25 @@ public class SLList {
             currentNode = currentNode.next;
         }
         currentNode.next = new IntNode(x, currentNode.next);
+
+    }
+    public void reverseRecursively() {
+        first = reverseHelper(first);
     }
 
-    public void reverse() {
+    public IntNode reverseHelper(IntNode first) {
+        if (first == null || first.next == null) {
+            return first;
+        } else {
+            IntNode endOfReversed = first.next;
+            endOfReversed.next = first;
+            IntNode reversed = reverseHelper(first.next);
+            first.next = null;
+            return reversed;
+        }
+
+    }
+    public void reverseIteratively() {
         /** Special cases: when the SLList is null or it has only one element,
          * there is not need to reverse anything. */
         if (first == null || first.next == null) {
@@ -57,18 +73,22 @@ public class SLList {
             first = ptr;
             ptr = temp;
         }
+
     }
 
     public static void main(String[] args) {
         SLList s1 = new SLList();
-        for (int i = 10; i > 0; i--) {
+        for (int i = 3; i > 0; i--) {
            s1.addFirst(i);
         }
-        s1.insert(100,5); //usual case
+        /* s1.insert(100,5); //usual case
         s1.insert(200, 50); //position is way too large
         s1.insert(300, 12); //kind of like addLast because insert at the end
         s1.insert(400,1);
         s1.insert(500,0);
         s1.insert(600, 7);
+        s1.reverseIteratively(); */
+        s1.reverseRecursively();
+
     }
 }
