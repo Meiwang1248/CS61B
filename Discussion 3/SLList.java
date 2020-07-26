@@ -48,8 +48,8 @@ public class SLList {
             return first;
         } else {
             IntNode endOfReversed = first.next;
-            endOfReversed.next = first;
             IntNode reversed = reverseHelper(first.next);
+            endOfReversed.next = first;
             first.next = null;
             return reversed;
         }
